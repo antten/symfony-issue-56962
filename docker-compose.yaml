@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+    php-apache:
+        build: .
+        environment:
+            APACHE_RUN_DIR: /var/www/html/public
+            APACHE_LOG_DIR: /var/log/apache2
+            APACHE_PID_FILE: /var/run/apache2/apache2.pid
+            APACHE_RUN_USER: www-data
+            APACHE_RUN_GROUP: www-data
+            APACHE_SERVER_NAME: localhost
+        volumes:
+            - .:/var/www/html
+            - ./docker/php-apache/default.conf:/etc/apache2/sites-available/000-default.conf
+        ports:
+            - '80:80'
