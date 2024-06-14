@@ -17,6 +17,12 @@ framework:
     php_errors:
         log: true
 
+    handle_all_throwables: true
+
+    serializer:
+        default_context:
+            !php/const Symfony\Component\Serializer\Normalizer\DenormalizerInterface::COLLECT_DENORMALIZATION_ERRORS: true
+
 when@test:
     framework:
         test: true
